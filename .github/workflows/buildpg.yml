@@ -47,6 +47,6 @@ jobs:
         run: |
             echo on
             sc config "postgresql-x64-16" start= auto
-            net start postgresql-x64-16
+            net view postgresql-x64-16
             
 
