@@ -26,7 +26,7 @@ jobs:
         uses: actions/cache@v4
         id: cachePostgresInstaller
         with:
-          path: C:\OTHERBIN\postgres_install.exe
+          path: C:\OTHERBIN\postgresql_install.exe
           key: postgresql_installer
       - name: Download postgresql install from EDB
         uses: suisei-cn/actions-download-file@v1.6.0
@@ -42,4 +42,11 @@ jobs:
         run: |
             echo on
             C:\OTHERBIN\postgresql_install.exe --mode unattended --unattendedmodeui none --superpassword postgres --enable-components server    
+      - name: start postgresql
+        shell: cmd
+        run: |
+            echo on
+            sc config "postgresql-x64-16" start= auto
+            net start postgresql-x64-16
+            
 
